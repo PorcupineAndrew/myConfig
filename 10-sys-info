@@ -1,0 +1,32 @@
+#!/bin/sh
+
+[ -r /etc/lsb-release ] && . /etc/lsb-release
+
+if [ -z "$DISTRIB_DESCRIPTION" ] && [ -x /usr/bin/lsb_release ]; then
+	# Fall back to using the very slow lsb_release utility
+	DISTRIB_DESCRIPTION=$(lsb_release -s -d)
+fi
+
+upSeconds="$(/usr/bin/cut -d. -f1 /proc/uptime)"
+secs=$((${upSeconds}%60))
+mins=$((${upSeconds}/60%60))
+hours=$((${upSeconds}/3600%24))
+days=$((${upSeconds}/86400))
+UPTIME=`printf "%d days, %02dh%02dm%02ds" "$days" "$hours" "$mins" "$secs"`
+
+white="\033[37m"
+green="\033[36m"
+color_rst="\033[0m"
+
+# get the load averages
+read one five fifteen rest < /proc/loadavg
+
+echo "$(tput setaf 2)
+$DISTRIB_DESCRIPTION (`uname -roi`)
+`date +"%A, %e %B %Y, %r"`
+
+  ${white}Uptime.............:${green} ${UPTIME}
+  ${white}Memory.............:${green} `cat /proc/meminfo | grep MemFree | awk {'print $2'}`kB (Free) / `cat /proc/meminfo | grep MemTotal | awk {'print $2'}`kB (Total)
+  ${white}Load Averages......:${green} ${one}, ${five}, ${fifteen} (1, 5, 15 min)
+  ${white}IP Addresses.......:${green} `ip a | grep glo | awk '{print $2}' | head -1 | cut -f1 -d/` and `wget -q -O - http://icanhazip.com/ | tail`
+$(tput sgr0)\n${color_rst}"
