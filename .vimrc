@@ -1,6 +1,6 @@
 " **********************************************************************
 " * Description   : Vim configuration
-" * Last change   : 22:19:06 2020-07-29
+" * Last change   : 12:08:55 2020-08-04
 " * Author        : Yihao Chen
 " * Email         : chenyiha17@mails.tsinghua.edu.cn
 " * License       : www.opensource.org/licenses/bsd-license.php
@@ -230,7 +230,7 @@
 " Javascript file settings ------------------------------------------- {{{
     augroup JSGroup
         autocmd!
-        autocmd FileType javascript set formatprg=prettier\ --parser\ typescript\ --tab-width\ 4\ --stdin
+        autocmd FileType javascript set formatprg=prettier\ --parser\ typescript\ --tab-width\ 4 "\ --stdin
         autocmd BufWritePre *.js :silent! execute ":normal! gggqG\<c-o>\<c-o>"
         " autocmd BufWritePre *.js :normal gggqG
         autocmd FileType javascript nnoremap <buffer> <LocalLeader>c I//<Space><Esc>
@@ -243,7 +243,7 @@
 " Markdown file settings ---------------------------------------------- {{{
     augroup MDGroup
         autocmd!
-        autocmd FileType markdown set formatprg=prettier\ --parser\ markdown\ --tab-width\ 4\ --stdin
+        autocmd FileType markdown set formatprg=prettier\ --parser\ markdown\ --tab-width\ 4 "\ --stdin
         autocmd BufWritePre *.md :silent! execute ":normal! gggqG\<c-o>\<c-o>"
         autocmd FileType markdown onoremap ih :<c-u>execute "normal! ?^[-=]\\{2,\\}$\r:nohlsearch\rkvg_"<CR>
         autocmd FileType markdown onoremap inh :<c-u>execute "normal! /^[-=]\\{2,\\}$\r:nohlsearch\rkvg_"<CR>
