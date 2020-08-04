@@ -1,6 +1,6 @@
 " **********************************************************************
 " * Description   : Vim configuration
-" * Last change   : 11:55:50 2020-04-03
+" * Last change   : 22:19:06 2020-07-29
 " * Author        : Yihao Chen
 " * Email         : chenyiha17@mails.tsinghua.edu.cn
 " * License       : www.opensource.org/licenses/bsd-license.php
@@ -72,7 +72,8 @@
     nnoremap <Leader>) viw<Esc>a)<Esc>bi(<Esc>lel
     nnoremap <Leader>] viw<Esc>a]<Esc>bi[<Esc>lel
     nnoremap <Leader>} viw<Esc>a}<Esc>bi{<Esc>lel
-    nnoremap <Leader>} viw<Esc>a}<Esc>bi{<Esc>lel
+    nnoremap <Leader>> viw<Esc>a><Esc>bi<<Esc>lel
+    nnoremap <Leader><space> viw<Esc>a<space><Esc>bi<space><Esc>lel
     nnoremap <Leader><c-]> :execute 'ptag ' . expand('<cword>')<CR>
     " nnoremap <Leader>q :silent! bufdo q<CR>
     " function! BufQuit()
@@ -88,6 +89,7 @@
     vnoremap <Leader>} <Esc>`>a}<Esc>`<i{<Esc><C-O>
     vnoremap <Leader>] <Esc>`>a]<Esc>`<i[<Esc><C-O>
     vnoremap <Leader>> <Esc>`>a><Esc>`<i<<Esc><C-O>
+    vnoremap <Leader><space> <Esc>`>a<space><Esc>`<i<space><Esc><C-O>
 
     nnoremap <Leader>ev :split $MYVIMRC<CR>
     nnoremap <Leader>sv :source $MYVIMRC<CR>:echo "source" $MYVIMRC<CR>
