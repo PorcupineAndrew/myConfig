@@ -1,6 +1,6 @@
 " **********************************************************************
 " * Description   : Vim configuration
-" * Last change   : 12:08:55 2020-08-04
+" * Last change   : 15:33:10 2020-08-13
 " * Author        : Yihao Chen
 " * Email         : chenyiha17@mails.tsinghua.edu.cn
 " * License       : www.opensource.org/licenses/bsd-license.php
@@ -9,6 +9,7 @@
 
 " Basic settings ------------------------------------------------------ {{{
     syntax on
+    filetype plugin on
     colorscheme default
     set number
     set expandtab
@@ -249,6 +250,36 @@
         autocmd FileType markdown onoremap inh :<c-u>execute "normal! /^[-=]\\{2,\\}$\r:nohlsearch\rkvg_"<CR>
         autocmd FileType markdown onoremap ah :<c-u>execute "normal! ?^[-=]\\{2,\\}$\r:nohlsearch\rg_vk0"<CR>
         autocmd FileType markdown onoremap anh :<c-u>execute "normal! /^[-=]\\{2,\\}$\r:nohlsearch\rg_vk0"<CR>
+    augroup END
+" }}}
+
+
+" Golang file settings ------------------------------------------------ {{{
+" NOTE: look up vim-go cheat sheet for more information
+    augroup GoGroup
+        autocmd!
+        let g:go_fmt_autosave = 1
+        let g:go_fmt_fail_silently = 1
+        let g:go_fmt_command = "goimports"
+        let g:go_auto_type_info = 1
+        " let g:go_auto_sameids = 1
+        let g:go_highlight_types = 1
+        let g:go_highlight_fields = 1
+        let g:go_highlight_functions = 1
+        let g:go_highlight_function_calls = 1
+        let g:go_highlight_operators = 1
+        let g:go_highlight_extra_types = 1
+        let g:go_highlight_build_constraints = 1
+        " set updatetime=1000
+
+        autocmd FileType go nnoremap <buffer> <LocalLeader>c I//<Space><Esc>
+        autocmd FileType go vnoremap <buffer> <LocalLeader>c I//<Space><Esc>
+
+        autocmd FileType go inoremap <buffer> <LocalLeader>ff fmt.Printf()<Left>
+        autocmd FileType go inoremap <buffer> <LocalLeader>fn fmt.Println()<Left>
+        autocmd FileType go inoremap <buffer> <LocalLeader>lf log.Printf()<Left>
+        autocmd FileType go inoremap <buffer> <LocalLeader>ln log.Println()<Left>
+        autocmd VimEnter *.go :redraw!
     augroup END
 " }}}
 
