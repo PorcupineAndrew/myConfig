@@ -103,4 +103,9 @@ alias -s bz2='tar -xjvf'
 alias reconfig='exec zsh'
 
 # PROMPT='$FG[154]%n@%m%{$reset_color%} '$PROMPT
-PROMPT='%{$fg_bold[blue]%}%n:%m%{$reset_color%} '$PROMPT
+# PROMPT='%{$fg_bold[magenta]%}%n:%m%{$reset_color%} '$PROMPT
+
+gobin=`go env GOPATH`
+[ "$?" -eq 0 ] && PATH=${PATH}:${gobin}/bin
+
+export PATH="$PATH:/usr/local/go/bin"
