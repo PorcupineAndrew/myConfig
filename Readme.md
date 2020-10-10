@@ -47,3 +47,14 @@
 ## change hostname
 
 -   `hostnamectl set-hostname NAME`
+
+## amend fcitx
+
+```
+sudo mkdir /usr/local/fcitx-amend && sudo cp fcitx-amend/fcitx_amend.sh /usr/local/fcitx-amend
+sudo cp fcitx-amend/fcitx-amend.service /etc/systemd/system
+sudo systemctl daemon-reload
+sudo systemctl enable fcitx-amend.service
+sudo systemctl start fcitx-amend.service
+sudo systemctl status fcitx-amend.service
+```

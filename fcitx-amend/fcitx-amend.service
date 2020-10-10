@@ -1,0 +1,11 @@
+[Unit]
+Description=fcitx cpu usage amend
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/bin/bash /usr/local/fcitx-amend/fcitx_amend.sh
+TimeoutStartSec=0
+
+[Install]
+WantedBy=default.target
