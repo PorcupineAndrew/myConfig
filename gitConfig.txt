@@ -1,0 +1,15 @@
+core.editor=vim
+alias.last=log -1 HEAD
+alias.all=log --all --oneline --graph
+alias.main=checkout master
+alias.spush=push --recurse-submodules=on-demand
+alias.supdate=submodule update --remote --merge
+alias.unstage=rm --cached
+alias.st=status
+grep.linenumber=true
+credential.helper=cache --timeout=3600
+rerere.enabled=true
+diff.submodule=log
+status.submodulesummary=1
+submodule.recurse=true
+push.recursesubmodules=check
