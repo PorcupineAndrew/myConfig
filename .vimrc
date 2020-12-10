@@ -1,6 +1,6 @@
 " **********************************************************************
 " * Description   : Vim configuration
-" * Last change   : 15:33:10 2020-08-13
+" * Last change   : 17:04:02 2020-12-10
 " * Author        : Yihao Chen
 " * Email         : chenyiha17@mails.tsinghua.edu.cn
 " * License       : www.opensource.org/licenses/bsd-license.php
@@ -60,6 +60,8 @@
     " nnoremap <c-]> :sp<CR><c-]>
     " nnoremap <c-]> :execute 'ptag ' . expand('<cword>')<CR>
     " nnoremap <c-t> :execute 'pclose' <CR><c-t>
+
+    cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 " }}}
 
 
